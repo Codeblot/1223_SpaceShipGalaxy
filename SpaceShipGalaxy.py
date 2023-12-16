@@ -32,7 +32,7 @@ class Meteor(pygame.sprite.Sprite):
                 self.rect.centerx += self.x_speed
                 self.rect.centery += self.y_speed
 
-                if self.rect.centery >= 850:
+                if self.rect.centery >= 800:
                         self.kill()
 
 
