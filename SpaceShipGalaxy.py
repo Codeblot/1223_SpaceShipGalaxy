@@ -1,7 +1,7 @@
 import pygame, sys, random
 
 class SpaceShip(pygame.sprite.Sprite):
-        def __init__(self,path,x_pos,y_pos,speed):
+        def __init__(self,path,x_pos,y_pos):
                 super().__init__()
                 self.image = pygame.image.load('assets/spaceship.png')
                 self.rect = self.image.get_rect(center = (x_pos,y_pos))
@@ -35,13 +35,23 @@ class Meteor(pygame.sprite.Sprite):
                 if self.rect.centery >= 800:
                         self.kill()
 
+class Laser(pygame.sprite.Sprite):
+        def __init__(self,path,x_pos,y_pos,speed):
+                super().__init__()
+                self.image = pygame.image.load('assets/Laser.png')
+                self.rect = self.image.get_rect(center = pos)
+                self.speed = speed
+
+        def update(self):
+                self.rect.cery -= self.speed
+                
 
 pygame.init() # Initiate pygame
 screen = pygame.display.set_mode((1280,720)) # Create display surface
 clock = pygame.time.Clock() # Create clock object (frames per second max)
 
 
-spaceship = SpaceShip('assets/spaceship.png',640,500,10) #Sprite Spaceship Group
+spaceship = SpaceShip('assets/spaceship.png',640,500) #Sprite Spaceship Group
 spaceship_group = pygame.sprite.GroupSingle()
 spaceship_group.add(spaceship)
 
