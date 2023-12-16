@@ -28,4 +28,4 @@ if self.rect.centery <-50:
 self.kill()
 ```
 
-6. 
+6. 4:51pm - Added Basic sheild tracker to top left of window, and a simple collision detection system that removes individual sheilds from the current amount if the spaceship collides with a meteor.
