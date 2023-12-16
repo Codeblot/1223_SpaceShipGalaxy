@@ -7,13 +7,15 @@ class SpaceShip(pygame.sprite.Sprite):
                 super().__init__()
                 self.image = pygame.image.load('assets/spaceship.png')
                 self.rect = self.image.get_rect(center = (x_pos,y_pos))
+                self.shield_surface = pygame.image.load('assets/shield.png')
+                self.health = 5
 
         def update(self):
                 self.rect.center = pygame.mouse.get_pos()
                 pygame.mouse.set_visible(False)
                 self.screen_constrain()
+                self.display_health()
 
-        
         def screen_constrain(self):
                 if self.rect.right >= 1280:
                         self.rect.right = 1280
@@ -23,6 +25,13 @@ class SpaceShip(pygame.sprite.Sprite):
                         self.rect.top = 0
                 if self.rect.bottom >= 720:
                         self.rect.bottom = 720
+
+        def display_health(self):
+                for index,shield in enumerate(range(self.health)):
+                        screen.blit(self.shield_surface,(10 + index * 40,10))
+
+        def get_damage(self,damage_amount):
+                self.health -= damage_amount
 
 #Meteor Shower that spawns on load
 class Meteor(pygame.sprite.Sprite):
@@ -100,6 +109,10 @@ while True: # Game loop
         laser_group.update()
         spaceship_group.update()
         meteor_group.update()
+        
+        # Collision Detections
+        if pygame.sprite.spritecollide(spaceship_group.sprite,meteor_group,True):
+                spaceship_group.sprite.get_damage(1)
 
         pygame.display.update() # Draw frame
         clock.tick(120) # Control framerate
