@@ -50,7 +50,6 @@ class Laser(pygame.sprite.Sprite):
 
         def update(self):
                 self.rect.centery -= self.speed
-                
                 if self.rect.centery <-50:
                         self.kill()
 

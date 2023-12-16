@@ -27,3 +27,5 @@ pygame.mouse.set_visible(False)
 if self.rect.centery <-50:
 self.kill()
 ```
+
+6. 
