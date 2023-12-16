@@ -14,20 +14,16 @@ I am learning how Python and Godot can be utilized together for making games. Th
 
 3. 4:03pm - Found the method on Python-CE Docs. https://pyga.me/docs/ref/mouse.html#pygame.mouse.set_visible. 
 
-
-```python
-pygame.mpuse.set_visible()```
+pygame.mouse.set_visible()
 
 Since I already defined the class SpaceShip, I placed the new code in the def update as 
 
-```python
 pygame.mouse.set_visible(False)```
 
 This created the desired change.
 
 5. Added killswitch for laser after leaving the active window to midigate frame data.
 
-```python
+python
 if self.rect.centery <-50:
 self.kill()
-```
